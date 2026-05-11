@@ -12,7 +12,8 @@ import 'simple_button.dart';
 
 // Custom Pause Button for the game
 // Extends SimpleButton and uses the game reference for interaction with the MainRouterGame
-class PauseButtonCustom extends SimpleButton with HasGameReference<MainRouterGame> {
+class PauseButtonCustom extends SimpleButton
+    with HasGameReference<MainRouterGame> {
   // Constructor for PauseButtonCustom
   // Accepts an optional VoidCallback 'onPressed' which is triggered when the button is pressed
   PauseButtonCustom({VoidCallback? onPressed})
@@ -26,6 +27,7 @@ class PauseButtonCustom extends SimpleButton with HasGameReference<MainRouterGam
           position: Vector2(60, 10), // Button position on the screen
         ) {
     // If no custom action is passed, navigate to the game pause screen using router
-    super.action = onPressed ?? () => game.router.pushNamed(AppRouter.gamePause);
+    super.action =
+        onPressed ?? () => game.router.pushNamed(AppRouter.gamePause);
   }
 }

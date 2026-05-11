@@ -1,25 +1,25 @@
 {
-    "dart.lineLength": 100,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true,
-    "autoHeader": {
-      "format": {
-          "startWith": "/*",
-          "middleWith": "*",
-          "endWith": "*/",
-          "headerPrefix": "@"
-      },
-      "header": {
-          "Author": "Flutter Journey 🎯 <flutterjourney.org@gmail.com>",
-          "Created": {
-              "type": "createTime",
-              "format": "YYYY-MM-DD HH:mm:ss"
-          },
-          "Message": "You look very hardworking 👨‍💻. Keep focusing on your goals. 🌤️"
-      }
+  "dart.lineLength": 100,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "autoHeader": {
+    "format": {
+      "startWith": "/*",
+      "middleWith": "*",
+      "endWith": "*/",
+      "headerPrefix": "@"
     },
-    "cSpell.words": [
-        "grayscale",
-        "Insan"
-    ]
+    "header": {
+      "Author": "Flutter Journey 🎯 <flutterjourney.org@gmail.com>",
+      "Created": {
+        "type": "createTime",
+        "format": "YYYY-MM-DD HH:mm:ss"
+      },
+      "Message": "You look very hardworking 👨‍💻. Keep focusing on your goals. 🌤️"
+    }
+  },
+  "cSpell.words": [
+    "grayscale",
+    "Insan"
+  ]
 }

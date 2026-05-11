@@ -5,6 +5,7 @@
  */
 
 import 'dart:async';
+
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'dart:io';
@@ -50,7 +51,8 @@ class GameOverRoute extends Route {
     final routeChildren = nextRoute.children.whereType<GamePage>();
     if (routeChildren.isNotEmpty) {
       final gamePage = routeChildren.first; // Get the first GamePage.
-      gamePage.removeAll(gamePage.children); // Remove all components from GamePage.
+      gamePage
+          .removeAll(gamePage.children); // Remove all components from GamePage.
     }
 
     nextRoute
@@ -60,8 +62,10 @@ class GameOverRoute extends Route {
 }
 
 /// This class represents the Game Over page displayed after the game ends.
-class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRouterGame> {
-  late TextComponent _textComponent; // Text component to show the game over message.
+class GameOverPage extends Component
+    with TapCallbacks, HasGameReference<MainRouterGame> {
+  late TextComponent
+      _textComponent; // Text component to show the game over message.
   late TextComponent _textTimeComponent;
   late TextComponent _textScoreComponent;
   late TextComponent _textNewGameComponent;
@@ -137,9 +141,12 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
     addAll(
       [
         _textComponent = TextComponent(
-          text: 'Game Over', // The message to display.
-          position: flameGame.canvasSize / 2, // Center the text on the canvas.
-          anchor: Anchor.center, // Set the anchor point to the center.
+          text: 'Game Over',
+          // The message to display.
+          position: flameGame.canvasSize / 2,
+          // Center the text on the canvas.
+          anchor: Anchor.center,
+          // Set the anchor point to the center.
           children: [
             // Add a scaling effect to the text.
             ScaleEffect.to(
@@ -173,7 +180,8 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
           textRenderer: textScorePaint,
         ),
         _textGameModeComponent = TextComponent(
-          text: "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
+          text:
+              "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
           position: flameGame.canvasSize / 2,
           anchor: game.isDesktop ? Anchor.centerLeft : Anchor.center,
           textRenderer: textPaint,
@@ -188,16 +196,19 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
     super.onGameResize(size);
     _textComponent.position = Vector2(game.size.x / 2, game.size.y / 2 - 70);
     _textTimeComponent.position = Vector2(15, 20);
-    _textScoreComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 25);
+    _textScoreComponent.position =
+        Vector2(game.size.x / 2, game.size.y / 2 + 25);
     _textScoreComponent.text = 'Score: ${game.getScore()}';
 
-    _buttonLeaderboard.position = Vector2(game.size.x / 2, game.size.y / 2 + 110);
+    _buttonLeaderboard.position =
+        Vector2(game.size.x / 2, game.size.y / 2 + 110);
 
     _textNewGameComponent.position = game.isDesktop
         ? Vector2(game.size.x - 15, game.size.y - 15)
         : Vector2(game.size.x / 2, game.size.y - 15);
-    _textGameModeComponent.position =
-        game.isDesktop ? Vector2(15, game.size.y - 15) : Vector2(game.size.x / 2, game.size.y - 30);
+    _textGameModeComponent.position = game.isDesktop
+        ? Vector2(15, game.size.y - 15)
+        : Vector2(game.size.x / 2, game.size.y - 30);
   }
 
   /// Always returns true, indicating that this component can contain tap events.
@@ -223,7 +234,8 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
   void onTapUp(TapUpEvent event) {
     game.router
       ..pop() // Go back to the previous route.
-      ..pushNamed(AppRouter.homePage, replace: true); // Push the home page route.
+      ..pushNamed(AppRouter.homePage,
+          replace: true); // Push the home page route.
   }
 
   Future<void> captureAndSaveImage() async {
@@ -234,8 +246,9 @@ class GameOverPage extends Component with TapCallbacks, HasGameReference<MainRou
 
       game.render(c);
 
-      final Image image =
-          await recorder.endRecording().toImage(game.size.x.toInt(), game.size.y.toInt());
+      final Image image = await recorder
+          .endRecording()
+          .toImage(game.size.x.toInt(), game.size.y.toInt());
       ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List pngBytes = byteData!.buffer.asUint8List();
 

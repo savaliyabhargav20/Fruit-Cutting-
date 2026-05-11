@@ -53,11 +53,16 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
         TutorialFruitsListComponent(
           isLeft: true,
           fruits: [
-            TutorialFruitComponent(text: 'Apple', imagePath: AppImages.apple, isLeft: true),
-            TutorialFruitComponent(text: 'Banana', imagePath: AppImages.banana, isLeft: true),
-            TutorialFruitComponent(text: 'Cherry', imagePath: AppImages.cherry, isLeft: true),
-            TutorialFruitComponent(text: 'Kiwi', imagePath: AppImages.kiwi, isLeft: true),
-            TutorialFruitComponent(text: 'Orange', imagePath: AppImages.orange, isLeft: true),
+            TutorialFruitComponent(
+                text: 'Apple', imagePath: AppImages.apple, isLeft: true),
+            TutorialFruitComponent(
+                text: 'Banana', imagePath: AppImages.banana, isLeft: true),
+            TutorialFruitComponent(
+                text: 'Cherry', imagePath: AppImages.cherry, isLeft: true),
+            TutorialFruitComponent(
+                text: 'Kiwi', imagePath: AppImages.kiwi, isLeft: true),
+            TutorialFruitComponent(
+                text: 'Orange', imagePath: AppImages.orange, isLeft: true),
           ],
         )..position = Vector2(0, 50),
         _bombTextComponent = TextComponent(
@@ -69,9 +74,12 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
         TutorialFruitsListComponent(
           isLeft: false,
           fruits: [
-            TutorialFruitComponent(text: 'Bomb', imagePath: AppImages.bomb, isLeft: false),
-            TutorialFruitComponent(text: 'Flame', imagePath: AppImages.flame, isLeft: false),
-            TutorialFruitComponent(text: 'Flutter', imagePath: AppImages.flutter, isLeft: false),
+            TutorialFruitComponent(
+                text: 'Bomb', imagePath: AppImages.bomb, isLeft: false),
+            TutorialFruitComponent(
+                text: 'Flame', imagePath: AppImages.flame, isLeft: false),
+            TutorialFruitComponent(
+                text: 'Flutter', imagePath: AppImages.flutter, isLeft: false),
           ],
         )..position = Vector2(0, 50),
       ]);
@@ -131,11 +139,14 @@ class HomePage extends Component with HasGameReference<MainRouterGame> {
         Vector2(game.size.x / 2, game.size.y - game.size.y / 3.9);
     _tutorialRuleScore2Component.position =
         Vector2(game.size.x / 2, game.size.y - game.size.y / 5.1);
-    _tutorialRuleLose1Component.position = Vector2(game.size.x / 2, game.size.y / 5.1);
-    _tutorialRuleLose2Component.position = Vector2(game.size.x / 2, game.size.y / 3.9);
+    _tutorialRuleLose1Component.position =
+        Vector2(game.size.x / 2, game.size.y / 5.1);
+    _tutorialRuleLose2Component.position =
+        Vector2(game.size.x / 2, game.size.y / 3.9);
 
     _gameModeComponent.position = Vector2(game.size.x - 50, game.size.y - 50);
 
-    if (game.isDesktop) _bombTextComponent.position = Vector2(game.size.x - 45, 10);
+    if (game.isDesktop)
+      _bombTextComponent.position = Vector2(game.size.x - 45, 10);
   }
 }

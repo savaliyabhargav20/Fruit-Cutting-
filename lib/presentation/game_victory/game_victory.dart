@@ -6,6 +6,7 @@
 
 import 'dart:ui';
 import 'dart:async';
+
 // ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'dart:io';
@@ -13,7 +14,8 @@ import 'dart:io';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
-import 'package:flame/game.dart' hide Game; // Hides the Game class to avoid naming conflicts.
+import 'package:flame/game.dart'
+    hide Game; // Hides the Game class to avoid naming conflicts.
 import 'package:flame/rendering.dart';
 import 'package:flame/text.dart';
 import 'package:flutter/foundation.dart';
@@ -52,8 +54,10 @@ class VictoryRoute extends Route {
 }
 
 /// This class represents the pause page displayed when the game is paused.
-class GameVictoryPage extends Component with TapCallbacks, HasGameReference<MainRouterGame> {
-  late TextComponent _textComponent; // Text component to show the "VICTORY" message.
+class GameVictoryPage extends Component
+    with TapCallbacks, HasGameReference<MainRouterGame> {
+  late TextComponent
+      _textComponent; // Text component to show the "VICTORY" message.
   late TextComponent _textTimeComponent;
   late TextComponent _textScoreComponent;
   late TextComponent _textLeaderboardComponent;
@@ -110,7 +114,8 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
       onPressed: () {
         game.router
           ..pop() // Go back to the previous route.
-          ..pushNamed(AppRouter.homePage, replace: true); // Push the home page route.
+          ..pushNamed(AppRouter.homePage,
+              replace: true); // Push the home page route.
       },
     );
 
@@ -122,9 +127,12 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     addAll(
       [
         _textComponent = TextComponent(
-          text: 'VICTORY', // The message to display when the flameGame is paused.
-          position: flameGame.canvasSize / 2, // Center the text on the canvas.
-          anchor: Anchor.center, // Set the anchor point to the center of the text.
+          text: 'VICTORY',
+          // The message to display when the flameGame is paused.
+          position: flameGame.canvasSize / 2,
+          // Center the text on the canvas.
+          anchor: Anchor.center,
+          // Set the anchor point to the center of the text.
           children: [
             // Add a scaling effect to the text to make it pulsate.
             ScaleEffect.to(
@@ -157,7 +165,8 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
           textRenderer: textScorePaint,
         ),
         _textGameModeComponent = TextComponent(
-          text: "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
+          text:
+              "Mode: ${game.mode == 0 ? 'Easy' : game.mode == 1 ? 'Medium' : 'Hard'}",
           position: flameGame.canvasSize / 2,
           anchor: Anchor.centerLeft,
           textRenderer: textPaint,
@@ -172,9 +181,12 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
     super.onGameResize(size);
     _textComponent.position = Vector2(game.size.x / 2, game.size.y / 2 - 70);
     _textTimeComponent.position = Vector2(15, 20);
-    _textScoreComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 25);
-    _buttonNewGameComponent.position = Vector2(game.size.x / 2, game.size.y / 2 + 110);
-    _textLeaderboardComponent.position = Vector2(game.size.x - 15, game.size.y - 15);
+    _textScoreComponent.position =
+        Vector2(game.size.x / 2, game.size.y / 2 + 25);
+    _buttonNewGameComponent.position =
+        Vector2(game.size.x / 2, game.size.y / 2 + 110);
+    _textLeaderboardComponent.position =
+        Vector2(game.size.x - 15, game.size.y - 15);
     _textGameModeComponent.position = Vector2(15, game.size.y - 15);
 
     _textScoreComponent.text = 'Score: ${game.getScore()}';
@@ -219,8 +231,9 @@ class GameVictoryPage extends Component with TapCallbacks, HasGameReference<Main
 
       game.render(c);
 
-      final Image image =
-          await recorder.endRecording().toImage(game.size.x.toInt(), game.size.y.toInt());
+      final Image image = await recorder
+          .endRecording()
+          .toImage(game.size.x.toInt(), game.size.y.toInt());
       ByteData? byteData = await image.toByteData(format: ImageByteFormat.png);
       Uint8List pngBytes = byteData!.buffer.asUint8List();
 

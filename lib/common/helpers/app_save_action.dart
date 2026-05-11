@@ -19,7 +19,8 @@ class GitHubService {
     required String score,
     required this.mode,
     required this.win,
-  })  : title = 'Game Result Submission: $time - Score: $score - Mode: $mode - Win: ${win ? 1 : 0}',
+  })  : title =
+            'Game Result Submission: $time - Score: $score - Mode: $mode - Win: ${win ? 1 : 0}',
         baseIssueUrl =
             'https://github.com/Flutter-Journey/Fruit-Cutting-Game/issues/new?assignees=&labels=game-result&projects=&template=game_result.md';
 
